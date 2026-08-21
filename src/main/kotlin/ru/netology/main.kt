@@ -24,8 +24,8 @@ fun transferComission(cardType: String = "Mir", monthTransaction: Int = 0, amoun
             "Mastercard" -> {
                 if(monthTransaction > mcLimit){
                     (amount * mcComission).toInt() + mcMinComission
-                } else if (amount > mcLimit){
-                    ((amount - mcLimit) * mcComission).toInt() + mcMinComission
+                } else if (monthTransaction + amount > mcLimit){
+                    ((monthTransaction + amount - mcLimit) * mcComission).toInt() + mcMinComission
                 } else 0
             }
             "Visa" -> {
